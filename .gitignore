@@ -1,3 +1,20 @@
+# IDE
+.idea/
+.vscode/
+
+# Build
+/build/
+/build_ut/
+
+# Agents
+.claude/
+.opencode/
+.codegraph/
+.omo/
+
+# Logs
+*.log
+
 # Prerequisites
 *.d
 
