@@ -1,0 +1,59 @@
+name: Compile
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  # 代码格式检查
+  format:
+    name: Code Format
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install clang-format
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-format
+
+      - name: Check clang-format compliance
+        run: |
+          clang-format --dry-run --Werror $(find src include test \( -name '*.cpp' -o -name '*.h' \))
+
+  # 编译验证
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            cmake \
+            libopenmpi-dev \
+            openmpi-bin
+
+      - name: Show toolchain versions
+        run: |
+          gcc --version
+          cmake --version
+          mpirun --version
+
+      # 编译
+      - name: Build
+        run: |
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+          cmake --build build --parallel "$(nproc)"
