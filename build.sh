@@ -16,5 +16,5 @@ make -j$(nproc)
 # 验证产物
 echo ""
 echo "Build OK:"
-echo "  Library: $(pwd)/src/libsccl.a"
-echo "  Test:    $(pwd)/test/test_init"
+echo "  Library: $(pwd)/src/libsccl.so"
+echo "  Tests:   $(pwd)/test/test_init $(pwd)/test/test_allgather $(pwd)/test/test_allgather_ext"

@@ -1,5 +1,4 @@
-#ifndef SCCL_TYPES_H
-#define SCCL_TYPES_H
+#pragma once
 
 #include <stddef.h>
 #include <stdint.h>
@@ -9,15 +8,16 @@ extern "C"
 {
 #endif
 
-    // 通信域
+    // 通信域（不透明句柄，内部实现见 src/comm/communicator.h）
     struct scclComm;
     typedef struct scclComm *scclComm_t;
 
-    // root 节点信息
+    // root 节点信息（不透明句柄，内部实现见 src/comm/communicator.h）
     struct scclRootInfo;
     typedef struct scclRootInfo *scclRootInfo_t;
 
-// rootInfo 的字节大小（用于跨进程传递）
+    // rootInfo 的字节大小（用于跨进程传递）
+    // 注意：保持 #define 而非 constexpr，因为此头文件需兼容 C 消费者
 #define SCCL_ROOT_INFO_BYTES 64
 
     // 错误码
@@ -40,5 +40,3 @@ extern "C"
 #ifdef __cplusplus
 }
 #endif
-
-#endif // SCCL_TYPES_H

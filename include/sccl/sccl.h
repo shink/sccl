@@ -1,5 +1,4 @@
-#ifndef SCCL_H
-#define SCCL_H
+#pragma once
 
 #include <stddef.h>
 #include <stdint.h>
@@ -34,5 +33,3 @@ extern "C"
 #ifdef __cplusplus
 }
 #endif
-
-#endif // SCCL_H

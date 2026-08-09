@@ -1,3 +1,3 @@
 # SCCL
 
-Socket CCL written in C
+Socket CCL written in C++

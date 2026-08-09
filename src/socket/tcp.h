@@ -1,5 +1,4 @@
-#ifndef SCCL_SOCKET_TCP_H
-#define SCCL_SOCKET_TCP_H
+#pragma once
 
 #include <stddef.h>
 #include <stdint.h>
@@ -22,5 +21,3 @@ scclResult_t sccl_tcp_sendall(int fd, const void *buf, size_t n);
 
 // 循环接收直到 n 字节全部收到（处理短读与 EINTR）
 scclResult_t sccl_tcp_recvall(int fd, void *buf, size_t n);
-
-#endif // SCCL_SOCKET_TCP_H

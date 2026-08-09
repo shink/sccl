@@ -2,9 +2,9 @@
 add_library(sccl SHARED)
 
 target_sources(sccl PRIVATE
-    comm/communicator.c
-    ops/allgather.c
-    socket/tcp.c
+    comm/communicator.cpp
+    ops/allgather.cpp
+    socket/tcp.cpp
 )
 
 target_include_directories(sccl
